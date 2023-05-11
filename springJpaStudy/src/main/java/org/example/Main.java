@@ -18,7 +18,7 @@ public class Main {
 
             //비영속
             Member member = new Member();
-            member.setId(100L);
+            member.setId(101L);
             member.setName("helloJpa");
 
             //여기서 부터 영속 상태, 엔티티 매니저라는 곳에 영속성 컨텍스트에서 관리됌. 근데 아직 DB에 저장 안됌.
@@ -26,8 +26,11 @@ public class Main {
             em.persist(member);
             System.out.println("====After====");
 
-            //준영속, 영속에서 지움.
-            em.detach(member);
+            //1차 캐시 응용한것. DB Select 안하고 조회
+            Member findMember = em.find(Member.class, 101L);
+
+            System.out.println("findmember.id : " + findMember.getId() );
+            System.out.println("findmember.Name : " + findMember.getName() );
 
             //삭제, 실제 db에서 지우겠다.
 //            em.remove(member);
