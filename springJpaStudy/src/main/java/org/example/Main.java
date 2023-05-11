@@ -16,21 +16,11 @@ public class Main {
 
         try{
 
-            //비영속
-            Member member = new Member();
-            member.setId(101L);
-            member.setName("helloJpa");
+            //영속
+            Member findMember1 = em.find(Member.class,101L);
 
-            //여기서 부터 영속 상태, 엔티티 매니저라는 곳에 영속성 컨텍스트에서 관리됌. 근데 아직 DB에 저장 안됌.
-            System.out.println("====Before====");
-            em.persist(member);
-            System.out.println("====After====");
-
-            //1차 캐시 응용한것. DB Select 안하고 조회
-            Member findMember = em.find(Member.class, 101L);
-
-            System.out.println("findmember.id : " + findMember.getId() );
-            System.out.println("findmember.Name : " + findMember.getName() );
+            //똑같은거 조회할때는 select 쿼리가 안돌고 1차 캐시에서 가져옴을 볼수있음.
+            Member findMember2 = em.find(Member.class,101L);
 
             //삭제, 실제 db에서 지우겠다.
 //            em.remove(member);
