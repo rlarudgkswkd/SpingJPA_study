@@ -15,26 +15,15 @@ public class Main {
         tx.begin();
 
         try{
-            //INSERT
-//            Member member = new Member();
-//            member.setId(2L);
-//            member.setName("hellob");
-//              em.persist(member);
 
-            //Find
-//            Member findMember = em.find(Member.class, 1L);
-//            System.out.println("findMember.id : " + findMember.getId());
-//            System.out.println("findMember.name : " + findMember.getName());
+            //영속
+            Member findMember1 = em.find(Member.class,101L);
 
-            //Modify
-//            Member findMember = em.find(Member.class, 1L);
-//            findMember.setName("HelloJpa");
-            Member member1 = new Member(150L,"A");
-            Member member2 = new Member(160L,"B");
+            //똑같은거 조회할때는 select 쿼리가 안돌고 1차 캐시에서 가져옴을 볼수있음.
+            Member findMember2 = em.find(Member.class,101L);
 
-            em.persist(member1);
-            em.persist(member2);
-            System.out.println("================");
+            //영속 엔티티의 동일성 보장
+            System.out.println("result = " + (findMember1 == findMember2));
 
             tx.commit();
         }catch (Exception e){
