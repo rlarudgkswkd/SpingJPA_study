@@ -29,15 +29,12 @@ public class Main {
             //Modify
 //            Member findMember = em.find(Member.class, 1L);
 //            findMember.setName("HelloJpa");
+            Member member1 = new Member(150L,"A");
+            Member member2 = new Member(160L,"B");
 
-            List<Member> findMembers = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(10)
-                    .getResultList();
-
-            for (Member findMember : findMembers) {
-                System.out.println("member.name = " + findMember.getName());
-            }
+            em.persist(member1);
+            em.persist(member2);
+            System.out.println("================");
 
             tx.commit();
         }catch (Exception e){
