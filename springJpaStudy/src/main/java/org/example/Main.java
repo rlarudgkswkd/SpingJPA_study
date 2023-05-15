@@ -16,8 +16,12 @@ public class Main {
 
         try{
 
-            Member member = new Member(200L,"member2022");
-            em.persist(member);
+            Member memberA = new Member(200L,"memberA");
+            em.persist(memberA);
+            Member memberB = new Member(210L,"memberB");
+            em.persist(memberB);
+            Member memberC = new Member(220L,"member2022");
+            em.persist(memberC);
 
             em.flush();
 
