@@ -11,8 +11,8 @@ public class Member {
     //Getter, Setter …
 
 
-    public Member() {
-    }
+//    public Member() {
+//    }
 
     public Member(Long id, String name) {
         this.id = id;
