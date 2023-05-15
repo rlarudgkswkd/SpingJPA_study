@@ -29,11 +29,13 @@ public class Main {
             //Modify
 //            Member findMember = em.find(Member.class, 1L);
 //            findMember.setName("HelloJpa");
-            Member member1 = new Member(150L,"A");
-            Member member2 = new Member(160L,"B");
 
-            em.persist(member1);
-            em.persist(member2);
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZ"); //값만 변경해도 실행됌.
+            //update 쿼리를 날리듯이 작동함 왜지?
+
+//            em.persist(member);
+
             System.out.println("================");
 
             tx.commit();
