@@ -16,16 +16,12 @@ public class Main {
 
         try{
 
-            Member memberA = new Member(200L,"memberA");
-            em.persist(memberA);
-            Member memberB = new Member(210L,"memberB");
-            em.persist(memberB);
-            Member memberC = new Member(220L,"member2022");
-            em.persist(memberC);
+            //영속
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAA");
 
-            em.flush();
-
-//            em.persist(member);
+            //JPA에서 관리를 안하게함. 결과에 Update가 없음.
+            em.detach(member);
 
             System.out.println("================");
 
