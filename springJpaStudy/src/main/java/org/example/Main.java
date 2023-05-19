@@ -19,6 +19,7 @@ public class Main {
             //영속
             Member member = em.find(Member.class, 150L);
             member.setName("AAAAA");
+            Member member2 = em.find(Member.class, 150L);
 
             //JPA에서 관리를 안하게함. 결과에 Update가 없음.
 //            em.detach(member);
@@ -26,7 +27,7 @@ public class Main {
             //영속성 콘텍스트를 통으로 날려버림. 마찬가지로 update 없음.
             em.clear();
 
-            Member member2 = em.find(Member.class, 150L);
+            Member member3 = em.find(Member.class, 150L);
 
             System.out.println("================");
 
