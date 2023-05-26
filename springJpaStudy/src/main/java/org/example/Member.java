@@ -10,9 +10,8 @@ public class Member {
     private String name;
     //Getter, Setter …
 
-
-//    public Member() {
-//    }
+    public Member() {
+    }
 
     public Member(Long id, String name) {
         this.id = id;
